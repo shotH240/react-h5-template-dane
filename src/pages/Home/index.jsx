@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { actions } from '@/redux/modules/common';
 import { removeToken } from '../../utils/auth';
@@ -52,8 +52,10 @@ class Home extends Component {
     const { userInfo, testInfo } = this.props;
     return (
       <div className="test-wrap">
+        <Child />
         <div>姓名：{userInfo.userName}</div>
         <div>密码：{userInfo.password}</div>
+        <input />
         <div><Button type="primary" onClick={this.testHttp}> test axios http </Button></div>
         <div><Button type="ghost" onClick={this.testActionHttp}> test action http </Button></div>
         <div><Button onClick={this.logout}>退出</Button></div>
@@ -62,6 +64,15 @@ class Home extends Component {
       </div>
     );
   }
+}
+
+function Child() {
+  useEffect(() => {
+    console.log('tatt==')
+  })
+  return (<div>
+    test-child
+  </div>)
 }
 
 const mapStateToProps = (state) => {
